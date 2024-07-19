@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Oil Selector</title>
+    <style>
+        @font-face {
+            font-family: 'vetrino';
+            src: url('fonts/vetrino.otf') format('opentype');
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Lora', serif;
+            background: url('b2.png') no-repeat center center fixed; /* 替换为实际的图片路径 */
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: left;
+        }
+
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明效果 */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            margin-left: 5%;
+        }
+
+        h1 {
+            font-family: 'Vetrino', serif; /* 标题使用Vetrino字体 */
+            font-size: 32px; /* 调整字体大小以适应手机屏幕 */
+            margin: 0 0 20px 0;
+        }
+
+        p {
+            font-family: 'Lora', serif;
+            font-size: 18px; /* 调整字体大小以适应手机屏幕 */
+            margin: 0 0 20px 0;
+        }
+
+        button {
+            background-color: #667858;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #A9A49F;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明效果 */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2A2622; /* 确保文字颜色正确 */
+        }
+
+        h3 {
+            font-family: 'Vetrino', serif;
+            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
+        }
+
+        label {
+            font-family: 'Lora', serif;
+            display: block;
+            margin: 10px 0;
+            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
+        }
+
+        .start-btn {
+            background-color: #667858;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px 30px;
+            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
+            cursor: pointer;
+        }
+
+        .start-btn:hover {
+            background-color: #A9A49F;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 20px;
+        }
+
+        .progress {
+            width: 0;
+            height: 30px;
+            background-color: #4CAF50;
+            animation: progressAnimation 5s forwards;
+        }
+
+        @keyframes progressAnimation {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        #imageResult img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        #recommendation {
+            color: #2A2622; /* 确保文字颜色正确 */
+        }
+
+        .small-text {
+            font-family: 'Lora', serif;
+            font-size: 12px; /* 调整后的小字号 */
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-content">
+        <h1>Finding the right essential oil for you</h1>
+        <p>Discover the perfect essential oils for your needs.</p>
+        <button onclick="loadQuestion1()">Start Test</button>
+    </div>
+    <div class="container" id="mainContainer" style="display: none;">
+        <div id="content">
+            <form id="questionForm" style="display: none;">
+                <div id="question1">
+                    <h3>1. What type of plants do you prefer? <span class="small-text">(Select up to three)</span></h3>
+                    <label><input type="checkbox" name="plantType" value="Flower"> Flowers (e.g., Lavender, Rose)</label>
+                    <label><input type="checkbox" name="plantType" value="Herb"> Herbs (e.g., Mint, Basil)</label>
+                    <label><input type="checkbox" name="plantType" value="Tree"> Trees (e.g., Eucalyptus, Cedarwood)</label>
+                    <label><input type="checkbox" name="plantType" value="Fruit"> Fruits (e.g., Lemon, Orange)</label>
+                    <button type="button" onclick="showNextQuestion('question2')">Next</button>
+                </div>
+                <div id="question2" style="display: none;">
+                    <h3>2. What colors do you like? <span class="small-text">(Select up to three)</span></h3>
+                    <label><input type="checkbox" name="color" value="Red"> Red</label>
+                    <label><input type="checkbox" name="color" value="Orange"> Orange</label>
+                    <label><input type="checkbox" name="color" value="Yellow"> Yellow</label>
+                    <label><input type="checkbox" name="color" value="Green"> Green</label>
+                    <label><input type="checkbox" name="color" value="Blue"> Blue</label>
+                    <label><input type="checkbox" name="color" value="Purple"> Purple</label>
+                    <label><input type="checkbox" name="color" value="Pink"> Pink</label>
+                    <label><input type="checkbox" name="color" value="Wood"> Wood</label>
+                    <button type="button" onclick="showNextQuestion('question3')">Next</button>
+                </div>
+                <div id="question3" style="display: none;">
+                    <h3>3. What scents do you prefer? <span class="small-text">(Select up to three)</span></h3>
+                    <label><input type="checkbox" name="scent" value="Floral"> Floral (e.g., Jasmine, Ylang Ylang)</label>
+                    <label><input type="checkbox" name="scent" value="Fruity"> Fruity (e.g., Lemon, Orange)</label>
+                    <label><input type="checkbox" name="scent" value="Herbal"> Herbal (e.g., Mint, Rosemary)</label>
+                    <label><input type="checkbox" name="scent" value="Woody"> Woody (e.g., Sandalwood, Cedarwood)</label>
+                    <label><input type="checkbox" name="scent" value="Spicy"> Spicy (e.g., Ginger, Cinnamon)</label>
+                    <button type="button" onclick="showNextQuestion('question4')">Next</button>
+                </div>
+                <div id="question4" style="display: none;">
+                    <h3>4. What effects do you want from the essential oils? <span class="small-text">(Select up to three)</span></h3>
+                    <label><input type="checkbox" name="effect" value="Relaxation/Stress Relief"> Relaxation/Stress Relief</label>
+                    <label><input type="checkbox" name="effect" value="Energy/Focus"> Energy/Focus</label>
+                    <label><input type="checkbox" name="effect" value="Sleep Improvement"> Sleep Improvement</label>
+                    <label><input type="checkbox" name="effect" value="Pain Relief"> Pain Relief</label>
+                    <label><input type="checkbox" name="effect" value="Skin Care"> Skin Care</label>
+                    <label><input type="checkbox" name="effect" value="Immune Support"> Immune Support</label>
+                    <button type="button" onclick="showNextQuestion('question5')">Next</button>
+                </div>
+                <div id="question5" style="display: none;">
+                    <h3>5.
+                        How do you plan to use the essential oils? <span class="small-text">(Select all that apply)</span></h3>
+                        <label><input type="checkbox" name="usage" value="Diffusion"> Diffusion</label>
+                        <label><input type="checkbox" name="usage" value="Internal"> Internal Use</label>
+                        <label><input type="checkbox" name="usage" value="Topical"> Topical Application</label>
+                        <button type="button" onclick="submitForm()">Submit</button>
+                    </div>
+                </form>
+                <div id="loading" style="display: none;">
+                    <h3>Generating your recommendations, please wait...</h3>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div id="result" style="display: none;">
+                    <p id="recommendation"></p>
+                    <div id="imageResult"></div>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+    </html>
+    

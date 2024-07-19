@@ -6,8 +6,8 @@
     <title>Essential Oil Selector</title>
     <style>
         @font-face {
-            font-family: 'vetrino';
-            src: url('fonts/vetrino.otf') format('opentype');
+            font-family: 'Vetrino';
+            src: url('fonts/Vetrino.otf') format('opentype');
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
@@ -30,19 +30,19 @@
             background-color: rgba(0, 0, 0, 0.5); /* 半透明效果 */
             padding: 20px;
             border-radius: 10px;
-            max-width: 90%;
-            margin-left: 5%;
+            max-width: 600px;
+            margin: 0 10px; /* 调整左右边距 */
         }
 
         h1 {
             font-family: 'Vetrino', serif; /* 标题使用Vetrino字体 */
-            font-size: 32px; /* 调整字体大小以适应手机屏幕 */
+            font-size: 32px;
             margin: 0 0 20px 0;
         }
 
         p {
             font-family: 'Lora', serif;
-            font-size: 18px; /* 调整字体大小以适应手机屏幕 */
+            font-size: 16px;
             margin: 0 0 20px 0;
         }
 
@@ -51,7 +51,7 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
+            font-size: 18px;
             cursor: pointer;
             border-radius: 5px;
         }
@@ -67,7 +67,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 400px;
+            max-width: 600px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -78,14 +78,14 @@
 
         h3 {
             font-family: 'Vetrino', serif;
-            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
+            font-size: 24px;
         }
 
         label {
             font-family: 'Lora', serif;
             display: block;
             margin: 10px 0;
-            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
+            font-size: 18px;
         }
 
         .start-btn {
@@ -93,8 +93,8 @@
             color: white;
             border: none;
             border-radius: 50%;
-            padding: 15px 30px;
-            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
+            padding: 20px 40px;
+            font-size: 24px;
             cursor: pointer;
         }
 
@@ -132,7 +132,7 @@
 
         .small-text {
             font-family: 'Lora', serif;
-            font-size: 12px; /* 调整后的小字号 */
+            font-size: 14px; /* 调整后的小字号 */
         }
     </style>
 </head>
@@ -185,27 +185,25 @@
                     <button type="button" onclick="showNextQuestion('question5')">Next</button>
                 </div>
                 <div id="question5" style="display: none;">
-                    <h3>5.
-                        How do you plan to use the essential oils? <span class="small-text">(Select all that apply)</span></h3>
-                        <label><input type="checkbox" name="usage" value="Diffusion"> Diffusion</label>
-                        <label><input type="checkbox" name="usage" value="Internal"> Internal Use</label>
-                        <label><input type="checkbox" name="usage" value="Topical"> Topical Application</label>
-                        <button type="button" onclick="submitForm()">Submit</button>
-                    </div>
-                </form>
-                <div id="loading" style="display: none;">
-                    <h3>Generating your recommendations, please wait...</h3>
-                    <div class="progress-bar">
-                        <div class="progress"></div>
-                    </div>
+                    <h3>5. How do you plan to use the essential oils? <span class="small-text">(Select all that apply)</span></h3>
+                    <label><input type="checkbox" name="usage" value="Diffusion"> Diffusion</label>
+                    <label><input type="checkbox" name="usage" value="Internal"> Internal Use</label>
+                    <label><input type="checkbox" name="usage" value="Topical"> Topical Application</label>
+                    <button type="button" onclick="submitForm()">Submit</button>
                 </div>
-                <div id="result" style="display: none;">
-                    <p id="recommendation"></p>
-                    <div id="imageResult"></div>
+            </form>
+            <div id="loading" style="display: none;">
+                <h3>Generating your recommendations, please wait...</h3>
+                <div class="progress-bar">
+                    <div class="progress"></div>
                 </div>
             </div>
+            <div id="result" style="display: none;">
+                <p id="recommendation"></p>
+                <div id="imageResult"></div>
+            </div>
         </div>
-        <script src="app.js"></script>
-    </body>
-    </html>
-    
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

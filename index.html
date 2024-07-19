@@ -6,8 +6,8 @@
     <title>Essential Oil Selector</title>
     <style>
         @font-face {
-            font-family: 'Vetrino';
-            src: url('fonts/Vetrino.otf') format('opentype');
+            font-family: 'vetrino';
+            src: url('fonts/vetrino.otf') format('opentype');
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
@@ -30,19 +30,19 @@
             background-color: rgba(0, 0, 0, 0.5); /* 半透明效果 */
             padding: 20px;
             border-radius: 10px;
-            max-width: 600px;
-            margin: 0 10px; /* 调整左右边距 */
+            max-width: 90%;
+            margin-left: 5%;
         }
 
         h1 {
             font-family: 'Vetrino', serif; /* 标题使用Vetrino字体 */
-            font-size: 32px;
+            font-size: 32px; /* 调整字体大小以适应手机屏幕 */
             margin: 0 0 20px 0;
         }
 
         p {
             font-family: 'Lora', serif;
-            font-size: 16px;
+            font-size: 18px; /* 调整字体大小以适应手机屏幕 */
             margin: 0 0 20px 0;
         }
 
@@ -51,7 +51,7 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 18px;
+            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
             cursor: pointer;
             border-radius: 5px;
         }
@@ -67,7 +67,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 600px;
+            max-width: 400px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -78,14 +78,14 @@
 
         h3 {
             font-family: 'Vetrino', serif;
-            font-size: 24px;
+            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
         }
 
         label {
             font-family: 'Lora', serif;
             display: block;
             margin: 10px 0;
-            font-size: 18px;
+            font-size: 16px; /* 调整字体大小以适应手机屏幕 */
         }
 
         .start-btn {
@@ -93,8 +93,8 @@
             color: white;
             border: none;
             border-radius: 50%;
-            padding: 20px 40px;
-            font-size: 24px;
+            padding: 15px 30px;
+            font-size: 20px; /* 调整字体大小以适应手机屏幕 */
             cursor: pointer;
         }
 
@@ -132,7 +132,7 @@
 
         .small-text {
             font-family: 'Lora', serif;
-            font-size: 14px; /* 调整后的小字号 */
+            font-size: 12px; /* 调整后的小字号 */
         }
     </style>
 </head>
@@ -185,7 +185,8 @@
                     <button type="button" onclick="showNextQuestion('question5')">Next</button>
                 </div>
                 <div id="question5" style="display: none;">
-                    <h3>5. How do you plan to use the essential oils? <span class="small-text">(Select all that apply)</span></h3>
+                    <h3>5.
+                    How do you plan to use the essential oils? <span class="small-text">(Select all that apply)</span></h3>
                     <label><input type="checkbox" name="usage" value="Diffusion"> Diffusion</label>
                     <label><input type="checkbox" name="usage" value="Internal"> Internal Use</label>
                     <label><input type="checkbox" name="usage" value="Topical"> Topical Application</label>
